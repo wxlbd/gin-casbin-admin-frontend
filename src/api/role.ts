@@ -19,26 +19,34 @@ export interface RoleData {
 
 // 获取角色列表
 export const getRoles = (params?: RoleParams) => {
-  return http.request<HttpResponse<any>>("get", "/api/system/role", { params });
+  return http.request<HttpResponse<any>>("get", "/api/v1/system/role", {
+    params
+  });
 };
 
 // 新增角色
 export const addRole = (data: RoleData) => {
-  return http.request<HttpResponse<any>>("post", "/api/system/role", { data });
+  return http.request<HttpResponse<any>>("post", "/api/v1/system/role", {
+    data
+  });
 };
 
 // 修改角色
 export const updateRole = (data: RoleData) => {
-  return http.request<HttpResponse<any>>("put", `/api/system/role/${data.id}`, {
-    data
-  });
+  return http.request<HttpResponse<any>>(
+    "put",
+    `/api/v1/system/role/${data.id}`,
+    {
+      data
+    }
+  );
 };
 
 // 删除角色
 export const deleteRole = (ids: number[]) => {
   return http.request<HttpResponse<any>>(
     "delete",
-    `/api/system/role/${ids.join(",")}`
+    `/api/v1/system/role/${ids.join(",")}`
   );
 };
 
@@ -46,7 +54,7 @@ export const deleteRole = (ids: number[]) => {
 export const getRoleMenus = (roleId: number) => {
   return http.request<HttpResponse<RoleData[]>>(
     "get",
-    `/api/system/role/${roleId}/menus`
+    `/api/v1/system/role/${roleId}/menus`
   );
 };
 
@@ -54,7 +62,7 @@ export const getRoleMenus = (roleId: number) => {
 export const updateRoleMenu = (roleId: number, menuIds: number[]) => {
   return http.request<HttpResponse<any>>(
     "put",
-    `/api/system/role/${roleId}/menus`,
+    `/api/v1/system/role/${roleId}/menus`,
     {
       data: menuIds
     }
@@ -62,5 +70,5 @@ export const updateRoleMenu = (roleId: number, menuIds: number[]) => {
 };
 // 获取所有角色
 export const getAllRoles = () => {
-  return http.request<HttpResponse<any>>("get", "/api/system/role/all");
+  return http.request<HttpResponse<any>>("get", "/api/v1/system/role/all");
 };

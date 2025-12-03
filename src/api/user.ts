@@ -53,7 +53,7 @@ export type TableData = {
 
 /** 登录 */
 export const getLogin = (data?: object) => {
-  return http.request<HttpResponse<UserData>>("post", "/api/auth/login", {
+  return http.request<HttpResponse<UserData>>("post", "/api/v1/auth/login", {
     data
   });
 };
@@ -62,14 +62,14 @@ export const getLogin = (data?: object) => {
 export const refreshTokenApi = (data?: object) => {
   return http.request<HttpResponse<RefreshTokenData>>(
     "post",
-    "/api/auth/refresh-token",
+    "/api/v1/auth/refresh-token",
     { data }
   );
 };
 
 /** 账户设置-个人信息 */
 export const getMine = (data?: object) => {
-  return http.request<HttpResponse<UserInfo>>("get", "/api/user/profile", {
+  return http.request<HttpResponse<UserInfo>>("get", "/api/v1/user/profile", {
     data
   });
 };

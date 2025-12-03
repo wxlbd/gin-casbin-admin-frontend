@@ -5,8 +5,8 @@ import type { RouteRecordRaw } from "vue-router";
 // 后端返回的菜单项接口
 interface MenuItem {
   id: number;
-  parent_id: number;
-  menu_type: number;
+  parentId: number;
+  menuType: number;
   title: string;
   name: string;
   path: string;
@@ -14,21 +14,21 @@ interface MenuItem {
   rank: number | null;
   redirect: string;
   icon: string;
-  extra_icon: string;
-  enter_transition: string;
-  leave_transition: string;
-  active_path: string;
+  extraIcon: string;
+  enterTransition: string;
+  leaveTransition: string;
+  activePath: string;
   auths: string;
-  frame_src: string;
-  frame_loading: boolean;
-  keep_alive: boolean;
-  hidden_tag: boolean;
-  fixed_tag: boolean;
-  show_link: boolean;
-  show_parent: boolean;
+  frameSrc: string;
+  frameLoading: boolean;
+  keepAlive: boolean;
+  hiddenTag: boolean;
+  fixedTag: boolean;
+  showLink: boolean;
+  showParent: boolean;
   status: number;
-  created_at: string;
-  updated_at: string;
+  createdAt: string;
+  updatedAt: string;
   children: MenuItem[] | null;
 }
 
@@ -44,19 +44,19 @@ function transformMenuToRoute(menu: MenuItem): RouteRecordRaw {
       title: menu.title || menu.name,
       icon: menu.icon || "",
       rank: menu.rank || 0,
-      showLink: menu.show_link ?? true,
-      showParent: menu.show_parent ?? false,
-      keepAlive: menu.keep_alive ?? false,
-      frameSrc: menu.frame_src || "",
-      frameLoading: menu.frame_loading ?? true,
+      showLink: menu.showLink ?? true,
+      showParent: menu.showParent ?? false,
+      keepAlive: menu.keepAlive ?? false,
+      frameSrc: menu.frameSrc || "",
+      frameLoading: menu.frameLoading ?? true,
       transition: {
-        enterTransition: menu.enter_transition || "",
-        leaveTransition: menu.leave_transition || ""
+        enterTransition: menu.enterTransition || "",
+        leaveTransition: menu.leaveTransition || ""
       },
-      hiddenTag: menu.hidden_tag ?? false,
-      fixedTag: menu.fixed_tag ?? false,
+      hiddenTag: menu.hiddenTag ?? false,
+      fixedTag: menu.fixedTag ?? false,
       auths: menu.auths ? menu.auths.split(",").filter(Boolean) : [],
-      type: menu.menu_type
+      type: menu.menuType
     }
   };
 
@@ -64,7 +64,7 @@ function transformMenuToRoute(menu: MenuItem): RouteRecordRaw {
   if (menu.children && menu.children.length > 0) {
     // 只转换类型为菜单的子项
     const childrenRoutes = menu.children
-      .filter(child => child.menu_type === 1)
+      .filter(child => child.menuType === 1)
       .map(child => transformMenuToRoute(child));
 
     if (childrenRoutes.length > 0) {
@@ -84,14 +84,14 @@ function transformMenuToRoute(menu: MenuItem): RouteRecordRaw {
 function transformRoutes(menus: MenuItem[]): RouteRecordRaw[] {
   // 只转换类型为菜单的项
   return menus
-    .filter(menu => menu.menu_type === 1)
+    .filter(menu => menu.menuType === 1)
     .map(menu => transformMenuToRoute(menu));
 }
 
 // 获取异步路由
 export const getAsyncRoutes = () => {
   return http
-    .request<HttpResponse<MenuItem[]>>("get", "/api/user/profile/menus")
+    .request<HttpResponse<MenuItem[]>>("get", "/api/v1/user/profile/menus")
     .then(res => {
       console.log("转换前:", res.data);
       const routes = transformRoutes(res.data);

@@ -50,14 +50,14 @@ export interface DictDataItem {
 
 // 获取字典类型列表
 export const getDictTypes = (params?: any) => {
-  return http.request<HttpResponse<any>>("get", "/api/system/dict-type", {
+  return http.request<HttpResponse<any>>("get", "/api/v1/system/dict-type", {
     params
   });
 };
 
 // 新增字典类型
 export const addDictType = (data: DictType) => {
-  return http.request<HttpResponse<any>>("post", "/api/system/dict-type", {
+  return http.request<HttpResponse<any>>("post", "/api/v1/system/dict-type", {
     data
   });
 };
@@ -66,7 +66,7 @@ export const addDictType = (data: DictType) => {
 export const updateDictType = (data: DictType) => {
   return http.request<HttpResponse<any>>(
     "put",
-    `/api/system/dict-type/${data.id}`,
+    `/api/v1/system/dict-type/${data.id}`,
     { data }
   );
 };
@@ -75,20 +75,20 @@ export const updateDictType = (data: DictType) => {
 export const deleteDictType = (ids: number[]) => {
   return http.request<HttpResponse<any>>(
     "delete",
-    `/api/system/dict-type/${ids.join(",")}`
+    `/api/v1/system/dict-type/${ids.join(",")}`
   );
 };
 
 // 获取字典数据列表
 export const getDictDataList = (params?: any) => {
-  return http.request<HttpResponse<any>>("get", `/api/system/dict-data`, {
+  return http.request<HttpResponse<any>>("get", `/api/v1/system/dict-data`, {
     params
   });
 };
 
 // 新增字典数据
 export const addDictData = (data: DictData) => {
-  return http.request<HttpResponse<any>>("post", "/api/system/dict-data", {
+  return http.request<HttpResponse<any>>("post", "/api/v1/system/dict-data", {
     data
   });
 };
@@ -97,7 +97,7 @@ export const addDictData = (data: DictData) => {
 export const updateDictData = (data: DictData) => {
   return http.request<HttpResponse<any>>(
     "put",
-    `/api/system/dict-data/${data.id}`,
+    `/api/v1/system/dict-data/${data.id}`,
     { data }
   );
 };
@@ -106,6 +106,6 @@ export const updateDictData = (data: DictData) => {
 export const deleteDictData = (ids: number[]) => {
   return http.request<HttpResponse<any>>(
     "delete",
-    `/api/system/dict-data/${ids.join(",")}`
+    `/api/v1/system/dict-data/${ids.join(",")}`
   );
 };

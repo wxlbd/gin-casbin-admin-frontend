@@ -12,28 +12,34 @@ interface UserParams {
 
 // 获取用户列表
 export const getUserList = (params?: UserParams) => {
-  return http.request<HttpResponse<any>>("get", "/api/system/user", { params });
+  return http.request<HttpResponse<any>>("get", "/api/v1/system/user", {
+    params
+  });
 };
 
 // 新增用户
 export const addUser = (data: any) => {
-  return http.request<HttpResponse<any>>("post", "/api/system/user", {
+  return http.request<HttpResponse<any>>("post", "/api/v1/system/user", {
     data
   });
 };
 
 // 修改用户
 export const updateUser = (data: any) => {
-  return http.request<HttpResponse<any>>("put", `/api/system/user/${data.id}`, {
-    data
-  });
+  return http.request<HttpResponse<any>>(
+    "put",
+    `/api/v1/system/user/${data.id}`,
+    {
+      data
+    }
+  );
 };
 
 // 删除用户
 export const deleteUser = (ids: number[]) => {
   return http.request<HttpResponse<any>>(
     "delete",
-    `/api/system/user/${ids.join(",")}`
+    `/api/v1/system/user/${ids.join(",")}`
   );
 };
 
@@ -41,7 +47,7 @@ export const deleteUser = (ids: number[]) => {
 export const getUserRoleIds = (userId: number) => {
   return http.request<HttpResponse<any>>(
     "get",
-    `/api/system/user/${userId}/roles`
+    `/api/v1/system/user/${userId}/roles`
   );
 };
 
@@ -49,7 +55,7 @@ export const getUserRoleIds = (userId: number) => {
 export const updateUserPassword = (userId: number, password: string) => {
   return http.request<HttpResponse<any>>(
     "put",
-    `/api/system/user/${userId}/password`,
+    `/api/v1/system/user/${userId}/password`,
     {
       data: { password }
     }

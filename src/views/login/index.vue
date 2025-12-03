@@ -69,8 +69,8 @@ const refreshVerifyCode = async () => {
   try {
     const res = await getVerifyCode();
     if (res.code === 200) {
-      verifyCodeUrl.value = res.data.captcha_image;
-      ruleForm.captchaId = res.data.captcha_id;
+      verifyCodeUrl.value = res.data.captchaImage;
+      ruleForm.captchaId = res.data.captchaId;
       ruleForm.verifyCode = "";
     } else {
       message(res.message || t("login.verifyCodeError"), { type: "error" });

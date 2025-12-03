@@ -20,3 +20,13 @@ tests/**/coverage/
 *.njsproj
 *.sln
 tsconfig.tsbuildinfo
+
+# TypeScript compiled files (should not be in src)
+src/**/*.js
+src/**/*.js.map
+src/**/*.jsx
+src/**/*.jsx.map
+*.js.map
+
+# But keep iconfont.js files (they are real assets)
+!src/**/iconfont/iconfont.js
