@@ -93,6 +93,7 @@ onMounted(() => {
           返回
         </el-button>
         <el-button
+          v-auth="'system:dict:data:create'"
           type="primary"
           :icon="useRenderIcon(AddFill)"
           @click="openDialog()"
@@ -123,6 +124,7 @@ onMounted(() => {
         >
           <template #operation="{ row }">
             <el-button
+              v-auth="'system:dict:data:update'"
               class="reset-margin"
               link
               type="primary"
@@ -138,6 +140,7 @@ onMounted(() => {
             >
               <template #reference>
                 <el-button
+                  v-auth="'system:dict:data:delete'"
                   class="reset-margin"
                   link
                   type="primary"

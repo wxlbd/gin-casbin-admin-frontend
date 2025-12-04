@@ -214,9 +214,20 @@ export function useMenu() {
         }
         FormRef.validate(valid => {
           if (valid) {
+            // 从 formInline 和 formData 中排除 higherMenuOptions,避免发送整个菜单树
+            const {
+              higherMenuOptions: _higherMenuOptions1,
+              ...formInlineWithoutOptions
+            } = options.props.formInline;
+
+            const {
+              higherMenuOptions: _higherMenuOptions2,
+              ...formDataWithoutOptions
+            } = formData;
+
             const submitData = {
-              ...options.props.formInline,
-              ...formData,
+              ...formInlineWithoutOptions,
+              ...formDataWithoutOptions,
               title: formData.title,
               auths: formData.auths,
               menuType: formData.menuType,

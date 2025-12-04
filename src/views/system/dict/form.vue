@@ -31,19 +31,19 @@ defineExpose({ getRef });
     :rules="formRules"
     label-width="82px"
   >
-    <el-form-item label="字典名称" prop="name">
+    <el-form-item label="类型名称" prop="name">
       <el-input
         v-model="newFormInline.name"
         clearable
-        placeholder="请输入字典名称"
+        placeholder="请输入类型名称"
       />
     </el-form-item>
 
-    <el-form-item label="字典类型" prop="code">
+    <el-form-item label="类型编码" prop="code">
       <el-input
         v-model="newFormInline.code"
         clearable
-        placeholder="请输入字典类型"
+        placeholder="请输入类型编码"
       />
     </el-form-item>
 
