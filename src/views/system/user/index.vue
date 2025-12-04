@@ -97,6 +97,7 @@ const {
     <PureTableBar title="用户管理" :columns="columns" @refresh="onSearch">
       <template #buttons>
         <el-button
+          v-auth="'system:user:create'"
           type="primary"
           :icon="useRenderIcon(AddFill)"
           @click="openDialog()"
@@ -123,7 +124,14 @@ const {
           </div>
           <el-popconfirm title="是否确认删除?" @confirm="onbatchDel">
             <template #reference>
-              <el-button type="danger" text class="mr-1"> 批量删除 </el-button>
+              <el-button
+                v-auth="'system:user:delete'"
+                type="danger"
+                text
+                class="mr-1"
+              >
+                批量删除
+              </el-button>
             </template>
           </el-popconfirm>
         </div>
@@ -149,6 +157,7 @@ const {
         >
           <template #operation="{ row }">
             <el-button
+              v-auth="'system:user:update'"
               class="reset-margin"
               link
               type="primary"
@@ -164,6 +173,7 @@ const {
             >
               <template #reference>
                 <el-button
+                  v-auth="'system:user:delete'"
                   class="reset-margin"
                   link
                   type="primary"
@@ -187,6 +197,7 @@ const {
                 <el-dropdown-menu>
                   <el-dropdown-item>
                     <el-button
+                      v-auth="'system:user:update'"
                       :class="buttonClass"
                       link
                       type="primary"
@@ -199,6 +210,7 @@ const {
                   </el-dropdown-item>
                   <el-dropdown-item>
                     <el-button
+                      v-auth="'system:user:update'"
                       :class="buttonClass"
                       link
                       type="primary"
@@ -211,6 +223,7 @@ const {
                   </el-dropdown-item>
                   <el-dropdown-item>
                     <el-button
+                      v-auth="'system:role:set:menus'"
                       :class="buttonClass"
                       link
                       type="primary"

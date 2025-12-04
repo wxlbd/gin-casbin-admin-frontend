@@ -153,6 +153,7 @@ onMounted(() => {
       >
         <template #buttons>
           <el-button
+            v-auth="'system:role:create'"
             type="primary"
             :icon="useRenderIcon(AddFill)"
             @click="openDialog()"
@@ -184,6 +185,7 @@ onMounted(() => {
           >
             <template #operation="{ row }">
               <el-button
+                v-auth="'system:role:update'"
                 class="reset-margin"
                 link
                 type="primary"
@@ -199,6 +201,7 @@ onMounted(() => {
               >
                 <template #reference>
                   <el-button
+                    v-auth="'system:role:delete'"
                     class="reset-margin"
                     link
                     type="primary"
@@ -210,6 +213,7 @@ onMounted(() => {
                 </template>
               </el-popconfirm>
               <el-button
+                v-auth="'system:role:get:menus'"
                 class="reset-margin"
                 link
                 type="primary"

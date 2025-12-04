@@ -124,6 +124,7 @@ const {
       >
         <template #buttons>
           <el-button
+            v-auth="'sys:dict:add'"
             type="primary"
             :icon="useRenderIcon(AddFill)"
             @click="openDialog()"
@@ -153,6 +154,7 @@ const {
           >
             <template #operation="{ row }">
               <el-button
+                v-auth="'sys:dict:edit'"
                 class="reset-margin"
                 link
                 type="primary"
@@ -163,6 +165,7 @@ const {
                 修改
               </el-button>
               <el-button
+                v-auth="'sys:dict:edit'"
                 class="reset-margin"
                 link
                 type="primary"
@@ -178,6 +181,7 @@ const {
               >
                 <template #reference>
                   <el-button
+                    v-auth="'sys:dict:delete'"
                     class="reset-margin"
                     link
                     type="primary"

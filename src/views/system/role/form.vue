@@ -8,7 +8,8 @@ const props = withDefaults(defineProps<FormProps>(), {
     name: "",
     code: "",
     remark: "",
-    status: 0
+    sort: 0,
+    status: 1
   })
 });
 
@@ -43,6 +44,24 @@ defineExpose({ getRef });
         clearable
         placeholder="请输入角色标识"
       />
+    </el-form-item>
+
+    <el-form-item label="排序" prop="sort">
+      <el-input-number
+        v-model="newFormInline.sort"
+        :min="0"
+        :max="9999"
+        controls-position="right"
+        placeholder="请输入排序"
+        class="!w-full"
+      />
+    </el-form-item>
+
+    <el-form-item label="状态" prop="status">
+      <el-radio-group v-model="newFormInline.status">
+        <el-radio :value="1">已启用</el-radio>
+        <el-radio :value="2">已停用</el-radio>
+      </el-radio-group>
     </el-form-item>
 
     <el-form-item label="备注">

@@ -10,6 +10,8 @@ interface FormItemProps {
   remark?: string;
   /** 状态 */
   status?: number;
+  /** 排序 */
+  sort?: number;
 }
 interface FormProps {
   formInline: FormItemProps;
