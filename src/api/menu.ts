@@ -3,9 +3,13 @@ import type { HttpResponse } from "@/utils/http/types.d";
 
 // 修改菜单
 export const updateMenu = (data: any) => {
-  return http.request<HttpResponse<any>>("put", `/api/system/menu/${data.id}`, {
-    data
-  });
+  return http.request<HttpResponse<any>>(
+    "put",
+    `/api/v1/system/menu/${data.id}`,
+    {
+      data
+    }
+  );
 };
 
 interface MenuParams {
@@ -17,14 +21,14 @@ interface MenuParams {
 
 // 获取菜单
 export const getMenus = (params?: MenuParams) => {
-  return http.request<HttpResponse<any>>("get", "/api/system/menu", {
+  return http.request<HttpResponse<any>>("get", "/api/v1/system/menu", {
     params
   });
 };
 
 // 新增菜单
 export const addMenu = (data: any) => {
-  return http.request<HttpResponse<any>>("post", "/api/system/menu", {
+  return http.request<HttpResponse<any>>("post", "/api/v1/system/menu", {
     data
   });
 };
@@ -33,6 +37,6 @@ export const addMenu = (data: any) => {
 export const deleteMenu = (ids: number[]) => {
   return http.request<HttpResponse<any>>(
     "delete",
-    `/api/system/menu/${ids.join(",")}`
+    `/api/v1/system/menu/${ids.join(",")}`
   );
 };
