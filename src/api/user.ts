@@ -88,7 +88,7 @@ export const getUserList = (data?: object) => {
 export const assignUserRole = (userId: number, roleIds: number[]) => {
   return http.request<HttpResponse<any>>(
     "put",
-    `api/system/user/${userId}/roles`,
+    `/api/v1/system/user/${userId}/roles`,
     {
       data: { roleIds }
     }

@@ -223,7 +223,7 @@ const {
                   </el-dropdown-item>
                   <el-dropdown-item>
                     <el-button
-                      v-auth="'system:role:set:menus'"
+                      v-auth="'system:user:set:roles'"
                       :class="buttonClass"
                       link
                       type="primary"

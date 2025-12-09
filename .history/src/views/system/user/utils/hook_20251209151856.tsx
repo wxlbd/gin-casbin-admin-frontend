@@ -468,7 +468,7 @@ export function useUser(tableRef: Ref) {
     try {
       // 选中的角色列表
       const userRolesRes = await getUserRoleIds(row.id);
-      const ids = userRolesRes.data?.map(item => item?.id) ?? [];
+      const ids = userRolesRes.data?.map(item => item?.ID) ?? [];
 
       const allRolesRes = await getAllRoles();
       roleOptions.value = allRolesRes.data ?? [];

@@ -469,10 +469,10 @@ export function useUser(tableRef: Ref) {
       // 选中的角色列表
       const userRolesRes = await getUserRoleIds(row.id);
       const ids = userRolesRes.data?.map(item => item?.id) ?? [];
-
+      
       const allRolesRes = await getAllRoles();
       roleOptions.value = allRolesRes.data ?? [];
-
+      
       addDialog({
         title: `分配 ${row.username} 用户的角色`,
         props: {

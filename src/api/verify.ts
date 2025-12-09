@@ -8,5 +8,5 @@ interface CaptchaData {
 
 // 获取验证码
 export const getVerifyCode = () => {
-  return http.request<HttpResponse<CaptchaData>>("get", "/api/auth/captcha");
+  return http.request<HttpResponse<CaptchaData>>("get", "/api/v1/auth/captcha");
 };

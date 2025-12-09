@@ -61,10 +61,12 @@ export const getRoleMenus = (roleId: number) => {
 // 保存角色的菜单权限
 export const updateRoleMenu = (roleId: number, menuIds: number[]) => {
   return http.request<HttpResponse<any>>(
-    "put",
+    "post",
     `/api/v1/system/role/${roleId}/menus`,
     {
-      data: menuIds
+      data: {
+        menuIds: menuIds
+      }
     }
   );
 };
