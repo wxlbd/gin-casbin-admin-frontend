@@ -30,3 +30,4 @@ src/**/*.jsx.map
 
 # But keep iconfont.js files (they are real assets)
 !src/**/iconfont/iconfont.js
+.history
